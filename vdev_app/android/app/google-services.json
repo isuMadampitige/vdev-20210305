@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1056651468426",
+    "project_id": "vdev-ced6c",
+    "storage_bucket": "vdev-ced6c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1056651468426:android:e69fc205591c13b975d773",
+        "android_client_info": {
+          "package_name": "com.example.vdev_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1056651468426-t671ajv045kln9p4t4jvt0omb7lh9c55.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBLhquWP-U_a3ruBAfEHDo2elPb2PklEqE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1056651468426-t671ajv045kln9p4t4jvt0omb7lh9c55.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
