@@ -59,7 +59,7 @@ class _InfoScreenState extends State<InfoScreen> with TickerProviderStateMixin {
                 child: Container(
                   width: MediaQuery.of(context).size.width * 3.5 / 4,
                   height: MediaQuery.of(context).size.height * 3 / 4,
-                  child: Image(image: AssetImage('assets/images/vdev.png')),
+                  child: Image(image: AssetImage('assets/images/project.png')),
                 ),
               ),
               Container(

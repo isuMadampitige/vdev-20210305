@@ -31,8 +31,6 @@ class _HomeScreenState extends State<DashboardScreen> {
         print(response.body);
         if (response.statusCode == 200) {
           setState(() {
-            // _productList = prdct.map((json) => Product.fromJson(json)).toList();
-            // _productList =
             Map<String, dynamic> map = json.decode(response.body);
             _productList = map["data"];
             print(_productList[0]["name"]);

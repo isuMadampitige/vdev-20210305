@@ -22,25 +22,52 @@ class _LoginScreenState extends State<SignInScreen> {
 
   bool isValid;
   bool isSubmites;
+  bool _buttonEnableByEmail = false;
+  bool _buttonEnableByPassword = false;
 
   @override
   void initState() {
     super.initState();
-    // myController.addListener(() {
-    //   //With this, you can "listen" all the changes on your text while
-    //   //you are typing on input
-    //   print("value: ${myController.text}");
-    //   //use setState to rebuild the widget
-    //   setState(() {
-    //     //you can check here if your text is valid or no
-    //     //_isValidText() is just an invented function that returns
-    //     //a boolean representing if the text is valid or not
-    //     if (_isValidText(myController.text))
-    //       isValid = true;
-    //     else
-    //       isValid = false;
-    //   });
-    // });
+    emailContoller.addListener(() {
+      print("value: ${emailContoller.text}");
+      setState(() {
+        if (_formKey.currentState.validate()) {
+          if (emailContoller.text.length == 0) {
+            _buttonEnableByEmail = false;
+            return "* Required";
+          } else if (!emailContoller.text.contains("@")) {
+            _buttonEnableByEmail = false;
+            return "Please enter valid email";
+          } else if (!emailContoller.text.contains(".lk")) {
+            _buttonEnableByEmail = false;
+            return "Please enter valid email";
+          } else {
+            _buttonEnableByEmail = true;
+            return null;
+          }
+        }
+      });
+    });
+
+    passwordContoller.addListener(() {
+      print("value: ${passwordContoller.text}");
+      setState(() {
+        if (_formKey.currentState.validate()) {
+          if (passwordContoller.text.isEmpty) {
+            _buttonEnableByPassword = false;
+            return "* Required";
+          } else if (passwordContoller.text.length < 6) {
+            _buttonEnableByPassword = false;
+            return "Password should be atleast 6 characters";
+          } else if (passwordContoller.text.length > 15) {
+            _buttonEnableByPassword = false;
+            return "Password should not be greater than 12 characters";
+          } else
+            _buttonEnableByPassword = true;
+          return null;
+        }
+      });
+    });
   }
 
 /*dailog user sign in loading*/
@@ -75,9 +102,8 @@ class _LoginScreenState extends State<SignInScreen> {
               child: Column(
                 children: [
                   Container(
-                    // height: MediaQuery.of(context).size.height * 6 / 10,
                     margin:
-                        EdgeInsets.symmetric(horizontal: 30.0, vertical: 70),
+                        EdgeInsets.symmetric(horizontal: 30.0, vertical: 50),
                     child: Form(
                       key: _formKey,
                       child: Column(
@@ -142,18 +168,15 @@ class _LoginScreenState extends State<SignInScreen> {
                                       ),
                                     ),
                                     validator: (value) {
-                                      if (value.length == 0)
+                                      if (value.length == 0) {
                                         return "* Required";
-                                      else if (!value.contains("@"))
+                                      } else if (!value.contains("@")) {
                                         return "Please enter valid email";
-                                      else if (!value.contains("."))
+                                      } else if (!value.contains(".lk")) {
                                         return "Please enter valid email";
-                                      else if (!value.contains(".lk"))
-                                        return "Please enter valid email";
-                                      else if (!value.contains(".com"))
-                                        return "Please enter valid email";
-                                      else
+                                      } else {
                                         return null;
+                                      }
                                     },
                                     onSaved: (input) => _email = input.trim(),
                                   ),
@@ -249,13 +272,17 @@ class _LoginScreenState extends State<SignInScreen> {
                                   height: 50.0,
                                   width: 120.0,
                                   child: RaisedButton(
-                                    color: Colors.green,
+                                    color: _buttonEnableByEmail &&
+                                            _buttonEnableByPassword
+                                        ? Colors.green
+                                        : Colors.grey,
                                     shape: RoundedRectangleBorder(
                                         borderRadius:
                                             BorderRadius.circular(3.0)),
-                                    onPressed: () {
-                                      _submit();
-                                    },
+                                    onPressed: _buttonEnableByEmail == true &&
+                                            _buttonEnableByPassword == true
+                                        ? _submit
+                                        : null,
                                     child: Text(
                                       'Sign In',
                                       style: TextStyle(
@@ -273,54 +300,54 @@ class _LoginScreenState extends State<SignInScreen> {
                             height: 20,
                           ),
                           Visibility(
-                              visible: (isValid == false &&
-                                  isSubmites == true), // condition here
+                              visible: (isValid == false && isSubmites == true),
                               child: Container(
-                                child: Column(
-                                  children: <Widget>[
-                                    // Button send image
-                                    Padding(
-                                      padding: const EdgeInsets.all(10.0),
-                                      child: Row(
+                                  child: Column(
+                                    children: <Widget>[
+                                      // Button send image
+                                      Padding(
+                                        padding: const EdgeInsets.all(10.0),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Text(
+                                              "Invalid email or password",
+                                              style: TextStyle(
+                                                  fontSize: 20,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      Column(
                                         mainAxisAlignment:
-                                            MainAxisAlignment.center,
+                                            MainAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            "Invalid email or password",
-                                            style: TextStyle(
-                                                fontSize: 20,
-                                                fontWeight: FontWeight.bold),
-                                          ),
+                                              "Email: joe@black.lk Password: Jo45*78",
+                                              style: TextStyle(fontSize: 18)),
+                                          Text(
+                                              "Email: amal@acme.lk Password: La79*!_io",
+                                              style: TextStyle(fontSize: 18)),
+                                          Text(
+                                              "Email: peter@pan.lk Password: Nap42-24",
+                                              style: TextStyle(fontSize: 18)),
                                         ],
                                       ),
-                                    ),
-                                    Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                            "Email: joe@black.lk Password: Jo45*78",
-                                            style: TextStyle(fontSize: 18)),
-                                        Text(
-                                            "Email: amal@acme.lk Password: La79*!_io",
-                                            style: TextStyle(fontSize: 18)),
-                                        Text(
-                                            "Email:peter@pan.lk Password: Nap42-24",
-                                            style: TextStyle(fontSize: 18)),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                                width: double.infinity,
-                                height: 140.0,
-                                decoration: BoxDecoration(
-                                    border: Border(
-                                        top: BorderSide(
-                                            color: Colors.grey, width: 0.5)),
-                                    color: Colors.white),
-                              ))
+                                    ],
+                                  ),
+                                  width: double.infinity,
+                                  height: 140.0,
+                                  decoration: BoxDecoration(
+                                      border: Border.all(
+                                        color: Colors.green,
+                                      ),
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(10)))))
                         ],
                       ),
                     ),
@@ -343,9 +370,6 @@ class _LoginScreenState extends State<SignInScreen> {
         await AuthService.signIn(
                 context: context, email: _email, password: _password)
             .then((value) {
-          setState(() {
-            isValid = true;
-          });
           Navigator.pop(context);
           if (value) {
             Navigator.pushReplacement(
@@ -354,14 +378,13 @@ class _LoginScreenState extends State<SignInScreen> {
                     builder: (_) => DashboardScreen(widget.user)));
           }
         });
-      } else {
-        setState(() {
-          isValid = false;
-        });
       }
     } catch (err) {
-      // Navigator.pop(context);
+      Navigator.pop(context);
       print(err);
+      setState(() {
+        isValid = false;
+      });
     }
   }
 }
