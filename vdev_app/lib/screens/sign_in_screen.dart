@@ -4,9 +4,6 @@ import 'package:vdev_app/screens/dashboard_screen.dart';
 import 'package:vdev_app/services/auth_services.dart';
 
 class SignInScreen extends StatefulWidget {
-  final User user;
-  const SignInScreen(this.user);
-
   @override
   State<StatefulWidget> createState() {
     return _LoginScreenState();
@@ -370,12 +367,11 @@ class _LoginScreenState extends State<SignInScreen> {
         await AuthService.signIn(
                 context: context, email: _email, password: _password)
             .then((value) {
+          var user = FirebaseAuth.instance.currentUser;
           Navigator.pop(context);
           if (value) {
-            Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                    builder: (_) => DashboardScreen(widget.user)));
+            Navigator.pushReplacement(context,
+                MaterialPageRoute(builder: (_) => DashboardScreen(user)));
           }
         });
       }

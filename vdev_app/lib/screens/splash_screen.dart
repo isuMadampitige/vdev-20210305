@@ -21,7 +21,7 @@ class _SpalshScreenState extends State<SpalshScreen> {
             context, MaterialPageRoute(builder: (_) => DashboardScreen(user)));
       } else {
         Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (_) => SignInScreen(user)));
+            context, MaterialPageRoute(builder: (_) => SignInScreen()));
       }
     });
   }

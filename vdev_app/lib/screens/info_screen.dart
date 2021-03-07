@@ -83,6 +83,25 @@ class _InfoScreenState extends State<InfoScreen> with TickerProviderStateMixin {
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       children: [
+                                        SizedBox(
+                                          height: 20,
+                                        ),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              "Product Categories",
+                                              style: TextStyle(
+                                                  fontSize: 30,
+                                                  color: Colors.black,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          height: 20,
+                                        ),
                                         Container(
                                           width: MediaQuery.of(context)
                                                   .size

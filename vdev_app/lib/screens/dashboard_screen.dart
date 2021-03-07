@@ -19,6 +19,7 @@ class _HomeScreenState extends State<DashboardScreen> {
   List<dynamic> _productList = List<dynamic>();
   bool _productsLoading = false;
   String signedTime = "";
+  bool _isloading = false;
 
 /*get product details from given endpoint*/
   Future<void> _getProductList() async {
@@ -71,10 +72,21 @@ class _HomeScreenState extends State<DashboardScreen> {
               return Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Text(
-                    widget.user.email,
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                  ),
+                  _isloading
+                      ? Center(
+                          child: CircularProgressIndicator(),
+                        )
+                      : widget.user == null
+                          ? Center(
+                              child: Text('No email.'),
+                            )
+                          : Container(
+                              child: Text(
+                                widget.user.email,
+                                style: TextStyle(
+                                    fontSize: 24, fontWeight: FontWeight.bold),
+                              ),
+                            ),
                   Padding(
                     padding: const EdgeInsets.all(15.0),
                     child: Container(
@@ -257,8 +269,7 @@ class _HomeScreenState extends State<DashboardScreen> {
                 Navigator.of(context).pop();
                 AuthService.signOut();
                 Navigator.of(context).pushAndRemoveUntil(
-                    MaterialPageRoute(
-                        builder: (context) => SignInScreen(widget.user)),
+                    MaterialPageRoute(builder: (context) => SignInScreen()),
                     (Route<dynamic> route) => false);
               },
             ),
