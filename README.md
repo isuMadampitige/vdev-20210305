@@ -57,6 +57,15 @@
 
         Flutter can even be embedded in cars, TVs, and smart home appliances, providing the most pervasive and portable experience for an ambient computing world.
 
-        Support Flutter from a mobile framework to a portable framework.
+        •Support Flutter from a mobile framework to a portable framework.
+        •Flutter 2 free upgrade
+        •Google pay rewrote in flutter forproductivity gains.
+        •microsft contributing foldabels to flutter.
+        •flutter web support.
+        •iRobote building multiplatform with flutter.
+        •Flutter is canonicale dufualt choice.
+        •sound null safty in dart.
+        •upgraded firebase plugins for flutter.
+        •Google mobile Ads sdk for flutter.
 
 
