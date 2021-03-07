@@ -38,25 +38,46 @@
   ***	From a console window that has the Flutter directory in the path (see above), run the following command to see if there are any platform dependencies you need to complete       the setup:
           • flutter doctor
 
+  Get the VS code Ide
+  Download the latest version of VS code IDE here: https://code.visualstudio.com/
+  •	Install vs code
+  •	Start VS Code.
+  •	Invoke View > Command Palette….
+  •	Type “install”, and select Extensions: Install Extensions.
+  •	Type “flutter” in the extensions search field, select Flutter in the list, and click Install. This also installs the required Dart plugin.
 
-    Get the VS code IDE
-      1. Download the latest vs code IDE here: https://code.visualstudio.com/
-          •	Install flutter and Dart plugins
-          •	Start VS Code.
-          •	Invoke View > Command Palette….
-          •	Type “install”, and select Extensions: Install Extensions.
-          •	Type “flutter” in the extensions search field, select Flutter in the list, and click Install. This also installs the required Dart plugin.
-
-
-    Setup android emulator
+      
+      
+   Setup android emulator
           1. Launch Android Studio, click the AVD Manager icon, and select Create Virtual Device…
 
-    ***	After that again run flutter doctor command to check the installation dependencies.
+   ***	After that again run flutter doctor command to check the installation dependencies
+   
+
     
   7.   announcing Flutter 2: a major upgrade to Flutter that enables developers to create beautiful, fast, and portable apps for any platform.
 
-        Flutter can even be embedded in cars, TVs, and smart home appliances, providing the most pervasive and portable experience for an ambient computing world.
+        •Support Flutter from a mobile framework to a portable framework.
+        •Flutter 2 free upgrade
+        •Google pay rewrote in flutter forproductivity gains.
+        •microsft contributing foldabels to flutter.
+        •flutter web support.
+        •iRobote building multiplatform with flutter.
+        •Flutter is canonicale dufualt choice.
+        •sound null safty in dart.
+        •upgraded firebase plugins for flutter.
+        •Google mobile Ads sdk for flutter.
 
-        Support Flutter from a mobile framework to a portable framework.
+
+  8.   Flutter is a cross-platform UI toolkit that is designed to allow code reuse across operating systems such as iOS and Android. During development, Flutter apps run in a VM that offers stateful hot reload of changes without needing a full recompile. And also have the hot restart to rebuild the application.
+
+Flutter architecture mainly have three parts such as Framework,Engine,Emberdder.
+
+Flutter engine, which is mostly written in C++ and supports the all-Flutter applications. The engine is responsible for rasterizing composited scenes whenever a new frame needs to be painted. It provides the low-level implementation of Flutter’s core API, including graphics, text layout, file and network I/O, accessibility support, plugin architecture, and a Dart runtime and compile toolchain.
+
+developers interact with Flutter through the Flutter framework, which provides a modern, reactive framework written in the Dart language. It includes a rich set of platform, layout, and foundational libraries, composed of a series of layers. Working from the bottom to the top, 
+we have widgets are the basically building blocks which following the widget tree structure and rendering with reactive user interface to the flutter engine. and takes to convert a hierarchy of widgets into the actual pixels painted onto a screen.
+
+When the application developing, we have to mange the state of the system which we developing. So, we have to use state management of widgets and the components of the app. And also using the state management we can control the system from one central place in our application.
 
 
