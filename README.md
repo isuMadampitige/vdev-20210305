@@ -52,4 +52,11 @@
           1. Launch Android Studio, click the AVD Manager icon, and select Create Virtual Device…
 
     ***	After that again run flutter doctor command to check the installation dependencies.
+    
+  7.   announcing Flutter 2: a major upgrade to Flutter that enables developers to create beautiful, fast, and portable apps for any platform.
+
+        Flutter can even be embedded in cars, TVs, and smart home appliances, providing the most pervasive and portable experience for an ambient computing world.
+
+        Support Flutter from a mobile framework to a portable framework.
+
 
